@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     
         if user && user.authenticate(params["password"]) 
             session[:user_id] = user.id
-            redirect "/users/#{user.id}" 
+            redirect "/search" 
         else 
             flash[:error] = "Invalid login" 
             redirect '/login' 
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
     
     get '/logout' do #flash message for successfull logout 
         session.clear
-        redirect '/'
+        redirect '/login'
      
     end 
 end 

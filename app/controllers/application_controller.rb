@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
     enable :sessions 
     set :public_folder, 'public'
     set :views, 'app/views' 
-    set :session, "secret" 
+    set :session_secret, ENV['SESSION_SECRET']
     register Sinatra::Flash 
   end
 
@@ -30,13 +30,19 @@ class ApplicationController < Sinatra::Base
   end 
 
 
-  
+   
 
-  get '/users/home' do
+  get '/search' do  
 
-    @user = User.find(session[:user_id])
-    erb :'/users/home'
+    erb :search 
   end   
+
+  post '/search' 
+    if "#{movie.title}" == true 
+      redirect ''
+
+  end 
+
 
   
 
