@@ -1,0 +1,30 @@
+<% if flash[:error] %>
+    <div class="errors flash fatal">
+        <h4 class="error"><%= flash[:error] %></h4>
+    </div>
+<%end%>
+
+<h1>Log In Below:</h1>   
+
+<form action="/login" method="POST"> 
+
+<p> 
+<label for="email">Email:</label> 
+<input type="text" name="email" id="email" /> 
+<p> 
+
+<p> 
+<label for="password">Password:</label> 
+<input type="password" name="password" id="password" /> 
+<p> 
+
+<input type="submit" />
+
+</form>  
+
+
+
+
+
+
+

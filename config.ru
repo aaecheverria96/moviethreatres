@@ -5,3 +5,7 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 run ApplicationController  #when you run shotgun this is the first file that will be read 
+                            #control z used to quit tux 
+use SessionsController 
+use TheatresController 
+use UsersController 

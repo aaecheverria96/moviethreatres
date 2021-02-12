@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_192950) do
+ActiveRecord::Schema.define(version: 2021_02_07_062004) do
+
+  create_table "movies", force: :cascade do |t|
+    t.time "duration"
+    t.string "title"
+    t.string "genre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movietheatres", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "theatr_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "theatres", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.time "hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -18,6 +41,15 @@ ActiveRecord::Schema.define(version: 2021_02_03_192950) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "usertheatres", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "theatre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["theatre_id"], name: "index_usertheatres_on_theatre_id"
+    t.index ["user_id"], name: "index_usertheatres_on_user_id"
   end
 
 end
