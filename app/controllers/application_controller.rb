@@ -1,5 +1,6 @@
 require 'sinatra/flash'
-require './config/environment'
+require './config/environment' 
+require 'pry'
 
 class ApplicationController < Sinatra::Base
  
@@ -12,9 +13,15 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash 
   end
 
+
+
   get "/" do
     erb :welcome 
   end  
+
+  error Sinatra::NotFound do 
+    erb :"error.html" 
+  end 
 
   get ['/registration','/signup'] do 
 
@@ -33,15 +40,42 @@ class ApplicationController < Sinatra::Base
    
 
   get '/search' do  
+    if false 
 
-    erb :search 
+      if true 
+
+        if Movie.find_by(title: params[:title]) == true 
+          redirect '/theatres/display'
+        elsif Theatre.find_by(name: params[:name]) == true 
+          redirect '/movies/display'  
+        end 
+      end 
+      else 
+      erb :search 
+    end 
   end   
 
-  post '/search' 
-    if "#{movie.title}" == true 
-      redirect ''
+  # get '/search' do 
+  
+  # if false
+  
+  #   if true 
+    
+     
+  #     if Movie.find_by(title) == true || Theatre.find_by(name) == true 
+  #       redirect '/users/display'
+  #     end 
+      
+  #       else 
+  #       erb :search 
+    
+  #   end 
+  # end 
 
-  end 
+
+
+
+end 
 
 
   
@@ -51,5 +85,5 @@ class ApplicationController < Sinatra::Base
  
 
   
-end
+
 

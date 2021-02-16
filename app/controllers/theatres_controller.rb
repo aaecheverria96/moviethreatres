@@ -5,11 +5,18 @@ class TheatresController < ApplicationController
     erb :"/theatres/index.html"
   end
 
-  # GET: /theatres/new
+ 
+
+
+
+  #Get: /theatre/name 
+  get "/theatres/:name" do 
+  @theatre = Theatre.find_by_name(params[:name]) 
+  erb :"/theatres/display"
+  end 
   
 
-  # POST: /theatres
-  
+   
 
   # GET: /theatres/5
   get "/theatres/:id" do
