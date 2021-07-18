@@ -1,1 +1,39 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit a Movie: </h1> 
+
+<form action="/movies/<%= @movie.id %>" method="Post">
+    <input type="hidden" name="_method" value="patch" >
+  <div class ="mb-1 row" >
+        <div class="col-md-1" >
+            <label for="Movie Name">Name your movie:</label>  
+        </div>
+        <div class="col-md-6">
+            <input type="name" name="movie[title]" id="movie" value="<%= @movie.title %>" /><br>
+        </div>
+    </div> 
+
+    <div class ="mb-1 row">
+        <div class="col-md-1">
+            <label for="Movie Duration">Duration:</label> 
+        </div> 
+        <div class="col-md-6">
+            <input type="text" name="movie[duration]" id="movie" value="<%= @movie.duration %>" /> 
+        </div>  
+
+    </div> 
+
+    <div class ="mb-4 row"> 
+        <div class="col-md-6"> 
+            <label for="Movie Genre">Genre:</label> 
+        </div> 
+        <div class="col-md-6">
+            <input type="text" name="movie[genre]" id="movie" value="<%= @movie.genre %>" /> 
+        </div> 
+    </div>
+
+    <input type="Submit" class="btn btn-success" value="Update" /> 
+
+</form> 
+
+ 
+
+

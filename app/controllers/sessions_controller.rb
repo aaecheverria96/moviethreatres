@@ -1,9 +1,12 @@
 class SessionsController < ApplicationController 
     
     get '/login' do 
-
-        erb :'registrations/login'
-      end 
+        if logged_in? 
+            erb :search 
+        else 
+            erb :"registrations/login"
+        end 
+    end 
     
     post '/login' do
         user = User.find_by(email: params["email"])
@@ -17,7 +20,7 @@ class SessionsController < ApplicationController
         end 
     end 
     
-    get '/logout' do #flash message for successfull logout 
+    get '/logout' do 
         session.clear
         redirect '/login'
      

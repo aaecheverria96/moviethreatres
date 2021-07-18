@@ -1,7 +1,7 @@
 
 <h1>Welcome Movie Lovers!:</h1>
 
-<form action="/search" method="GET"> 
+<form action="/results" method="POST"> 
 
 <div> 
 <label for="Search Theater">Search By Theater:</label> 
@@ -13,8 +13,26 @@
 <input type="text" name="movie" id="movie" /> 
 </div> 
 
-<input type="submit" />
+<input type="submit" />   
 
-</form>
+
+<div> 
+<a href="/movies/new">Create A Movie</a> 
+</div> 
+
+
+<div> 
+<a href="/users/favorites"> Your Favorites</a>
+</div> 
+
+
+
+
+
+</form>   
+
+
+
+
 
 <a href="/logout">Log Out</a> 

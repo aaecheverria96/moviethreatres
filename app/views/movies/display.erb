@@ -1,0 +1,25 @@
+<h1> Movie Info </h1> 
+
+    <div class="mb-1 row"
+        <div class="col-md-4"> 
+            <h3>Movie Title: <%= @movie.title %></h3>  
+        </div> 
+        <div class="col-md-4"> 
+            <h3>Genre: <%= @movie.genre %></h3> 
+        </div>   
+        <div class="col-md-4"> 
+            <h3>Duration: <%= @movie.duration %></h3> 
+    </div>  
+
+    <div class="buttons row"> 
+        <div class="mb-1 col-1">
+            <a href="/movies/<%= @movie.id %>/edit" class="btn btn-outline-dark btn-lg">Edit</a> 
+        </div> 
+        <div class="mb-1 col-6">  
+            <form action="/movies/<%= @movie.id %>" method="post">
+                <input type="hidden" name="_method" value="delete" > 
+                <input type="submit" value="Destroy" role="button" class="btn btn-danger btn-lg"> 
+            </form> 
+        </div>
+
+    </div>

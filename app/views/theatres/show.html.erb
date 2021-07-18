@@ -1,1 +1,14 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1> Here is what is now playing at <%=@theatre.name %> !!!</h1>
+ 
+
+
+<% if @movies.length > 0 %> 
+  <ul>
+    <% @movies.each do |movie|%> 
+      <li><a href="/movies/<%=movie.id%>"><%= movie.title %> - <%= movie.duration %> </a></li>
+    <% end %>
+  </ul>
+<% end %>  
+
+
+

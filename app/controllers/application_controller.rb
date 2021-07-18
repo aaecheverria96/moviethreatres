@@ -21,6 +21,25 @@ class ApplicationController < Sinatra::Base
 
   get ['/signin', '/access'] do 
     redirect '/login'
+  end   
+
+  helpers do 
+    def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end 
+
+    def logged_in? 
+      !!current_user
+    end  
+
+    def redirect_if_not_logged_in 
+      if !logged_in? 
+        redirect '/login' 
+      end 
+    end 
+  
+
+
   end 
 
   error Sinatra::NotFound do 
@@ -43,38 +62,33 @@ class ApplicationController < Sinatra::Base
 
    
 
-  get '/search' do  
-    if false 
+  post '/results' do  
+  
 
-      if true 
-
-        if Movie.find_by(title: params[:title]) == true 
-          redirect '/theatres/display'
-        elsif Theatre.find_by(name: params[:name]) == true 
-          redirect '/movies/display'  
+     movie = Movie.find_by(title: params[:movie].strip) 
+    theatre = Theatre.find_by(name: params[:theater].capitalize.strip)
+   
+        if movie && theatre 
+           
+          redirect "/theatre/#{theatre.id}/movies/#{movie.id}" 
+        elsif theatre 
+          redirect "/theatres/#{theatre.id}"  
+        elsif movie 
+          redirect "/theatres/display/movies/#{movie.id}" 
+        else  
+          redirect "/search"
         end 
-      end 
-      else 
-      erb :search 
-    end 
-  end   
+      end   
 
-  # get '/search' do 
-  
-  # if false
-  
-  #   if true 
-    
-     
-  #     if Movie.find_by(title) == true || Theatre.find_by(name) == true 
-  #       redirect '/users/display'
-  #     end 
       
-  #       else 
-  #       erb :search 
+
+  
+      
+      get "/search" do 
+        erb :search 
     
-  #   end 
-  # end 
+      end 
+
 
 
 

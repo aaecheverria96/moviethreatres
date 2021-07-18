@@ -1,3 +1,39 @@
-<h1>Insert the form to create a new instance of your model.</h1>
 
-#Movie.create(title, duration)
+<h1> Get Creative: </h1> 
+
+<form action="/movies" method="Post">
+  <div class ="mb-1 row" >
+        <div class="col-md-1" >
+            <label for="Movie Name">Name your movie:</label>  
+        </div>
+        <div class="col-md-6">
+            <input type="name" name="movie[title]" id="movie" /><br>
+        </div>
+    </div> 
+
+    <div class ="mb-1 row">
+        <div class="col-md-1">
+            <label for="Movie Duration">Duration:</label> 
+        </div> 
+        <div class="col-md-6">
+            <input type="text" name="movie[duration]" id="movie" /> 
+        </div>  
+
+    </div> 
+
+    <div class ="mb-4 row"> 
+        <div class="col-md-6"> 
+            <label for="Movie Genre">Genre:</label> 
+        </div> 
+        <div class="col-md-6">
+            <input type="text" name="movie[genre]" id="movie" /> 
+        </div> 
+    </div>
+
+   
+    <input type="Submit" />  
+
+</form> 
+
+
+

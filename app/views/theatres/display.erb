@@ -1,1 +1,17 @@
-#This movie is playing at these theatres!
+<h1> <%= @movie.title %> is playing at these theaters!  </h1> 
+
+<% if @theatres.length > 0 %> 
+  <ul>
+    <% @theatres.each do |theatre|%> 
+      <li><%= theatre.name %> - <%= theatre.location %> </li>
+    <% end %>
+  </ul>
+<% end %>      
+
+
+
+
+
+
+
+
